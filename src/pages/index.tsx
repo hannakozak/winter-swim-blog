@@ -20,9 +20,9 @@ const Home: NextPage<Props> = ({ blogPosts }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main>
+      <main className='container mx-auto sm:p-12'>
         <h1 className='text-emerald-400'>Winter Swimming Blog</h1>
-        <div>
+        <section className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
           {blogPosts.map((blog) => (
             <a key={blog.slug} href={`/${blog.slug}`}>
               <Post
@@ -36,7 +36,7 @@ const Home: NextPage<Props> = ({ blogPosts }) => {
               />
             </a>
           ))}
-        </div>
+        </section>
       </main>
     </>
   );
