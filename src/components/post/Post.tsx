@@ -19,7 +19,7 @@ export const Post = (data: IBlogPostFields) => {
         <h3 className='text-xs uppercase p-6'>
           {data.category?.fields.categoryName}
         </h3>
-        <h1 className='flex-1  text-lg font-semibold leading-snug  text-indigo-600 px-6'>
+        <h1 className='flex-1  text-lg font-semibold leading-snug  text-blue-900 px-6'>
           {data.title}
         </h1>
         <p className='px-6 pb-12'>{data.excerpt}</p>
