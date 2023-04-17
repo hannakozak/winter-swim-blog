@@ -2,6 +2,7 @@ import ContentService from '@lib/content-service';
 import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { IBlogPostFields } from 'src/@types/contentful';
+import { Carusel } from 'src/components/Carusel';
 import { Post } from 'src/components/post/Post';
 
 interface Props {
@@ -21,6 +22,7 @@ const Home: NextPage<Props> = ({ blogPosts }) => {
       </Head>
 
       <main className='container mx-auto lg:max-w-7xl sm:p-12'>
+        <Carusel />
         <section className='justify-center grid grid-cols-1 gap-6 md:grid-cols-2  lg:grid-cols-3'>
           {blogPosts.map((blog) => (
             <a key={blog.slug} href={`/${blog.slug}`}>
