@@ -5,11 +5,11 @@ import { IBlogPostFields } from 'src/@types/contentful';
 import { Carusel } from 'src/components/Carusel';
 import { Post } from 'src/components/post/Post';
 
-interface Props {
+interface HomeProps {
   blogPosts: IBlogPostFields[];
 }
 
-const Home: NextPage<Props> = ({ blogPosts }) => {
+const Home: NextPage<HomeProps> = ({ blogPosts }) => {
   return (
     <>
       <Head>
@@ -25,7 +25,7 @@ const Home: NextPage<Props> = ({ blogPosts }) => {
         <Carusel />
         <section className='justify-center grid grid-cols-1 gap-6 md:grid-cols-2  lg:grid-cols-3'>
           {blogPosts.map((blog) => (
-            <a key={blog.slug} href={`/${blog.slug}`}>
+            <a key={blog.slug} href={`/blog/${blog.slug}`}>
               <Post
                 title={blog.title}
                 publishDate={blog.publishDate}
@@ -45,7 +45,7 @@ const Home: NextPage<Props> = ({ blogPosts }) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const blogPosts = (
     await ContentService.instance.getEntriesByType<IBlogPostFields>('blogPost')
   ).map((entry) => entry.fields);

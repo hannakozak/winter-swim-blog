@@ -1,14 +1,14 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import { IBlogPostFields } from '../../src/@types/contentful';
-import ContentService from '../utils/content-service';
+import { IBlogPostFields } from '../../@types/contentful';
+import ContentService from '../../utils/content-service';
 
-interface Props {
+interface BlogPostProps {
   blogPost: IBlogPostFields;
 }
 
-const BlogPost: NextPage<Props> = ({
+const BlogPost: NextPage<BlogPostProps> = ({
   blogPost: {
     title,
     publishDate,
@@ -37,9 +37,10 @@ const BlogPost: NextPage<Props> = ({
 
 export default BlogPost;
 
-export const getStaticProps: GetStaticProps<Props, { slug: string }> = async (
-  ctx
-) => {
+export const getStaticProps: GetStaticProps<
+  BlogPostProps,
+  { slug: string }
+> = async (ctx) => {
   const { slug } = ctx.params!;
   const blogPost = await ContentService.instance.getBlogPostBySlug(slug);
 
