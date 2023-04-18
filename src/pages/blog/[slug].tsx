@@ -21,7 +21,7 @@ const BlogPost: NextPage<BlogPostProps> = ({
         <meta name='description' content={excerpt} />
       </Head>
 
-      <article className='prose flex flex-col content-center mx-auto max-w-3xl'>
+      <article className='prose flex flex-col content-center mx-auto md:max-w-3xl p-5'>
         <PostHeader title={title} author={author} publishDate={publishDate} />
         <PostBody title={title} featureImage={featureImage} content={content} />
       </article>

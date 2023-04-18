@@ -21,7 +21,7 @@ export const PostBody = (data: PostBodyProps) => {
         className='w-full h-60 object-cover'
       />
 
-      <div className='w-50'>
+      <div className='md:w-50'>
         {documentToReactComponents(data.content as Document)}
       </div>
     </>
