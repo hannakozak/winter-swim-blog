@@ -3,37 +3,31 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { IBlogPostFields } from '../../@types/contentful';
 import ContentService from '../../utils/content-service';
+import ContentfulImage from 'src/components/ContentfulImage';
+import { PostHeader } from 'src/components/post/PostHeader';
+import { PostBody } from 'src/components/post/PostBody';
 
 interface BlogPostProps {
   blogPost: IBlogPostFields;
 }
 
 const BlogPost: NextPage<BlogPostProps> = ({
-  blogPost: {
-    title,
-    publishDate,
-    featureImage,
-    author,
-    category,
-    excerpt,
-    content,
-  },
-}) => (
-  <div>
-    <Head>
-      <title>{title}</title>
-      <meta name='description' content={excerpt} />
-    </Head>
+  blogPost: { title, publishDate, featureImage, author, excerpt, content },
+}) => {
+  return (
+    <div>
+      <Head>
+        <title>{title}</title>
+        <meta name='description' content={excerpt} />
+      </Head>
 
-    <main>
-      <h1>{title}</h1>
-      <p></p>
-      <time dateTime={publishDate}>Published on {publishDate}</time>
-
-      <div>{documentToReactComponents(content!)}</div>
-    </main>
-  </div>
-);
+      <article className='prose flex flex-col content-center mx-auto max-w-3xl'>
+        <PostHeader title={title} author={author} publishDate={publishDate} />
+        <PostBody title={title} featureImage={featureImage} content={content} />
+      </article>
+    </div>
+  );
+};
 
 export default BlogPost;
 

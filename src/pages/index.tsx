@@ -3,7 +3,7 @@ import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { IBlogPostFields } from 'src/@types/contentful';
 import { Carusel } from 'src/components/Carusel';
-import { Post } from 'src/components/post/Post';
+import { PostPreview } from 'src/components/postPreview/PostPreview';
 
 interface HomeProps {
   blogPosts: IBlogPostFields[];
@@ -26,7 +26,7 @@ const Home: NextPage<HomeProps> = ({ blogPosts }) => {
         <section className='justify-center grid grid-cols-1 gap-6 md:grid-cols-2  lg:grid-cols-3'>
           {blogPosts.map((blog) => (
             <a key={blog.slug} href={`/blog/${blog.slug}`}>
-              <Post
+              <PostPreview
                 title={blog.title}
                 publishDate={blog.publishDate}
                 featureImage={blog.featureImage}
