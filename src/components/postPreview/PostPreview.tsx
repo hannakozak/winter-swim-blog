@@ -10,7 +10,7 @@ export const PostPreview = (data: IBlogPostFields) => {
       </div>
       <ContentfulImage
         width={400}
-        height={200}
+        height={300}
         alt={`Plog Image for ${data.title}`}
         src={data.featureImage?.fields.file.url}
         className='w-full h-60 object-cover  px-6 md:p-0'

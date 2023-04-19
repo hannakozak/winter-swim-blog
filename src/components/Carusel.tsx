@@ -2,7 +2,7 @@ import { RefObject, createRef, useState } from 'react';
 import ContentfulImage from './ContentfulImage';
 import { StaticImageData } from 'next/image';
 import { ArrowLeft, ArrowRight } from 'src/assets/icons';
-import { sliderPhotos } from 'src/assets/images/sliderPhotos';
+import { sliderPhotos } from 'public/images/sliderPhotos';
 
 interface ImageRef {
   [key: number]: RefObject<HTMLImageElement>;
@@ -58,8 +58,9 @@ export const Carusel = () => {
             >
               <ContentfulImage
                 src={image}
-                className='md:-mt-40'
                 alt='slider-photo'
+                width={1400}
+                className='md:-mt-40'
               />
             </div>
           ))}

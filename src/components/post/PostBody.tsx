@@ -14,8 +14,8 @@ export const PostBody = (data: PostBodyProps) => {
   return (
     <>
       <ContentfulImage
-        width={400}
-        height={200}
+        width={750}
+        height={240}
         alt={`Plug Image for ${data.title}`}
         src={data.featureImage?.fields.file.url}
         className='w-full h-60 object-cover'
