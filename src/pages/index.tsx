@@ -38,6 +38,11 @@ const Home: NextPage<HomeProps> = ({ blogPosts }) => {
             </a>
           ))}
         </section>
+        <script
+          id='dsq-count-scr'
+          src='//winterswimming.disqus.com/count.js'
+          async
+        ></script>
       </main>
     </>
   );

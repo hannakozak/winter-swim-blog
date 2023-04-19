@@ -6,14 +6,15 @@ import ContentService from '../../utils/content-service';
 import ContentfulImage from 'src/components/ContentfulImage';
 import { PostHeader } from 'src/components/post/PostHeader';
 import { PostBody } from 'src/components/post/PostBody';
+import DisqusComments from 'src/components/DisqusComments';
 
 interface BlogPostProps {
   blogPost: IBlogPostFields;
 }
 
-const BlogPost: NextPage<BlogPostProps> = ({
-  blogPost: { title, publishDate, featureImage, author, excerpt, content },
-}) => {
+const BlogPost: NextPage<BlogPostProps> = ({ blogPost }) => {
+  const { title, publishDate, featureImage, author, excerpt, content } =
+    blogPost;
   return (
     <div>
       <Head>
@@ -25,6 +26,9 @@ const BlogPost: NextPage<BlogPostProps> = ({
         <PostHeader title={title} author={author} publishDate={publishDate} />
         <PostBody title={title} featureImage={featureImage} content={content} />
       </article>
+      <div className='prose flex flex-col content-center mx-auto md:max-w-3xl p-5'>
+        <DisqusComments blogPost={blogPost} />
+      </div>
     </div>
   );
 };
