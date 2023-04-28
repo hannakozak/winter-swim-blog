@@ -1,0 +1,1 @@
+export const NUMBER_OF_DISPLAYED_POSTS = 6;
