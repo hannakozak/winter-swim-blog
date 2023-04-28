@@ -3,6 +3,7 @@ import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { IBlogPostFields } from 'src/@types/contentful';
 import { Carusel } from 'src/components/Carusel';
+import LoadMorePosts from 'src/components/LoadMorePosts';
 import { PostPreview } from 'src/components/postPreview/PostPreview';
 
 interface HomeProps {
@@ -23,21 +24,9 @@ const Home: NextPage<HomeProps> = ({ blogPosts }) => {
 
       <main className='container mx-auto lg:max-w-7xl sm:p-12'>
         <Carusel />
-        <section className='justify-center grid grid-cols-1 gap-6 md:grid-cols-2  lg:grid-cols-3'>
-          {blogPosts.map((blog) => (
-            <a key={blog.slug} href={`/blog/${blog.slug}`}>
-              <PostPreview
-                title={blog.title}
-                publishDate={blog.publishDate}
-                featureImage={blog.featureImage}
-                author={blog.author}
-                category={blog.category}
-                excerpt={blog.excerpt}
-                content={blog.content}
-              />
-            </a>
-          ))}
-        </section>
+        {blogPosts.length > 0 && (
+          <LoadMorePosts blogPosts={blogPosts} showMore={false} />
+        )}
         <script
           id='dsq-count-scr'
           src='//winterswimming.disqus.com/count.js'
