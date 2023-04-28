@@ -1,13 +1,16 @@
 import { useState, useEffect } from 'react';
 import { PostPreview } from './postPreview/PostPreview';
 import { IBlogPostFields } from 'src/@types/contentful';
+import { NUMBER_OF_DISPLAYED_POSTS } from '@lib/constance';
 
 interface LoadMorePostsProps {
   blogPosts: IBlogPostFields[];
 }
 
 export const LoadMorePosts = ({ blogPosts }: LoadMorePostsProps) => {
-  const [displayedPostsNumber, setDisplayedPostsNumber] = useState(6);
+  const [displayedPostsNumber, setDisplayedPostsNumber] = useState(
+    NUMBER_OF_DISPLAYED_POSTS
+  );
   const [showMore, setShowMore] = useState<null | Boolean>(null);
 
   function handleClick() {
