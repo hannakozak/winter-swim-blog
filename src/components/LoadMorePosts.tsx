@@ -1,27 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PostPreview } from './postPreview/PostPreview';
 import { IBlogPostFields } from 'src/@types/contentful';
 
 interface LoadMorePostsProps {
   blogPosts: IBlogPostFields[];
-  showMore: boolean;
 }
 
-export default function MoreStories({
-  blogPosts,
-  showMore,
-}: LoadMorePostsProps) {
+export const LoadMorePosts = ({ blogPosts }: LoadMorePostsProps) => {
   const [displayedPostsNumber, setDisplayedPostsNumber] = useState(6);
+  const [showMore, setShowMore] = useState<null | Boolean>(null);
 
   function handleClick() {
     setDisplayedPostsNumber(
       (prevDisplayedPostsNumer) => prevDisplayedPostsNumer + 3
     );
+    if (blogPosts.length <= displayedPostsNumber + 1) {
+      setShowMore(false);
+    }
   }
 
-  blogPosts.length <= displayedPostsNumber
-    ? (showMore = false)
-    : (showMore = true);
+  useEffect(() => {
+    if (blogPosts.length > displayedPostsNumber) {
+      setShowMore(true);
+    }
+  }, []);
 
   return (
     <>
@@ -52,4 +54,4 @@ export default function MoreStories({
       </div>
     </>
   );
-}
+};
