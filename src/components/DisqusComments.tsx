@@ -6,7 +6,7 @@ interface DisqusCommentsProps {
 }
 
 const DisqusComments = ({ blogPost }: DisqusCommentsProps) => {
-  const disqusShortname = 'stahlwalkercookbook';
+  const disqusShortname = 'winterswimming';
   const disqusConfig = {
     url: `https://winter-swimming-blog.vercel.app/blog/${blogPost.slug}`,
     identifier: blogPost.slug, // Single post slug
